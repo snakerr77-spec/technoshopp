@@ -3,6 +3,11 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "npx wrangler pages dev public --kv=CATALOG_KV"
+    "dev": "npx wrangler pages dev public --kv=CATALOG_KV",
+    "deploy": "wrangler deploy",
+    "preview": "wrangler dev"
+  },
+  "devDependencies": {
+    "wrangler": "^4.114.0"
   }
 }
