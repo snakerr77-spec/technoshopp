@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="theme-color" content="#0a0a0b" />
+    <title>Painel | TecnoShop</title>
+    <link rel="icon" href="/assets/tecnoshop-logo.png" />
+    <link rel="stylesheet" href="/admin/admin.css" />
+    <script src="/admin/admin.js" defer></script>
+  </head>
+  <body>
+    <div class="admin-shell">
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar__top">
+          <a class="brand" href="/">
+            <span class="brand__mark">T</span>
+            <span class="brand__text">TECNO<span>SHOP</span></span>
+          </a>
+          <span class="admin-label">PAINEL</span>
+        </div>
+
+        <nav class="sidebar__nav" aria-label="Seções do painel">
+          <button class="nav-item is-active" type="button" data-view="products">
+            <span class="nav-item__icon" aria-hidden="true">▦</span>
+            <span>Produtos</span>
+            <span class="nav-item__count" id="nav-product-count">0</span>
+          </button>
+          <button class="nav-item" type="button" data-view="categories">
+            <span class="nav-item__icon" aria-hidden="true">◇</span>
+            <span>Categorias</span>
+            <span class="nav-item__count" id="nav-category-count">0</span>
+          </button>
+        </nav>
+
+        <div class="sidebar__bottom">
+          <a class="store-link" href="/" target="_blank" rel="noopener">
+            <span aria-hidden="true">↗</span>
+            Abrir vitrine
+          </a>
+          <div class="protection-note">
+            <span class="protection-note__icon">✓</span>
+            <span><strong>Acesso protegido</strong><small>Use Cloudflare Access</small></span>
+          </div>
+        </div>
+      </aside>
+
+      <div class="admin-main">
+        <header class="topbar">
+          <div class="topbar__left">
+            <button class="sidebar-toggle" id="sidebar-toggle" type="button" aria-label="Abrir menu">
+              ☰
+            </button>
+            <div>
+              <span class="breadcrumb">CATÁLOGO / <span id="breadcrumb-current">PRODUTOS</span></span>
+              <h1 id="page-title">Produtos</h1>
+            </div>
+          </div>
+          <div class="topbar__right">
+            <span class="sync-status" id="sync-status">
+              <span></span>
+              Conectando...
+            </span>
+            <a class="topbar-store-link" href="/" target="_blank" rel="noopener">Ver site ↗</a>
+          </div>
+        </header>
+
+        <main class="content">
+          <section class="view is-active" id="products-view">
+            <div class="stats-grid">
+              <article class="stat-card">
+                <div>
+                  <span class="stat-card__label">PRODUTOS CADASTRADOS</span>
+                  <strong id="stat-products">0</strong>
+                  <small id="stat-products-detail">Carregando catálogo</small>
+                </div>
+                <span class="stat-card__icon stat-card__icon--orange">▦</span>
+              </article>
+              <article class="stat-card">
+                <div>
+                  <span class="stat-card__label">ITENS ATIVOS</span>
+                  <strong id="stat-active">0</strong>
+                  <small>Visíveis na vitrine</small>
+                </div>
+                <span class="stat-card__icon stat-card__icon--green">✓</span>
+              </article>
+              <article class="stat-card">
+                <div>
+                  <span class="stat-card__label">ESTOQUE TOTAL</span>
+                  <strong id="stat-stock">0</strong>
+                  <small>Unidades cadastradas</small>
+                </div>
+                <span class="stat-card__icon stat-card__icon--purple">⌁</span>
+              </article>
+            </div>
+
+            <section class="panel">
+              <div class="panel__header">
+                <div>
+                  <span class="panel__kicker">GESTÃO DO CATÁLOGO</span>
+                  <h2>Todos os produtos</h2>
+                  <p>Cadastre, edite e controle o que aparece na vitrine oficial.</p>
+                </div>
+                <button class="button button--primary" id="new-product" type="button">
+                  <span aria-hidden="true">＋</span> Novo produto
+                </button>
+              </div>
+
+              <div class="toolbar">
+                <label class="search-field">
+                  <span aria-hidden="true">⌕</span>
+                  <span class="sr-only">Buscar produto</span>
+                  <input id="admin-product-search" type="search" placeholder="Buscar por nome, condição ou tag..." />
+                </label>
+                <label class="filter-field">
+                  <span class="sr-only">Filtrar categoria</span>
+                  <select id="admin-category-filter">
+                    <option value="all">Todas as categorias</option>
+                  </select>
+                </label>
+                <label class="filter-field">
+                  <span class="sr-only">Filtrar status</span>
+                  <select id="admin-status-filter">
+                    <option value="all">Todos os status</option>
+                    <option value="active">Ativos</option>
+                    <option value="inactive">Inativos</option>
+                  </select>
+                </label>
+              </div>
+
+              <div class="product-list" id="admin-product-list"></div>
+              <div class="list-empty" id="product-list-empty" hidden>
+                <span>▦</span>
+                <h3>Nenhum produto encontrado</h3>
+                <p>Altere os filtros ou cadastre um novo item.</p>
+              </div>
+            </section>
+          </section>
+
+          <section class="view" id="categories-view">
+            <section class="panel">
+              <div class="panel__header">
+                <div>
+                  <span class="panel__kicker">ORGANIZAÇÃO</span>
+                  <h2>Categorias</h2>
+                  <p>Organize os produtos e controle as categorias visíveis no site.</p>
+                </div>
+                <button class="button button--primary" id="new-category" type="button">
+                  <span aria-hidden="true">＋</span> Nova categoria
+                </button>
+              </div>
+
+              <div class="category-list" id="category-list"></div>
+              <div class="list-empty" id="category-list-empty" hidden>
+                <span>◇</span>
+                <h3>Nenhuma categoria cadastrada</h3>
+                <p>Crie a primeira categoria do catálogo.</p>
+              </div>
+            </section>
+          </section>
+        </main>
+      </div>
+    </div>
+
+    <dialog class="modal modal--large" id="product-modal">
+      <form id="product-form">
+        <header class="modal__header">
+          <div>
+            <span class="modal__kicker">CATÁLOGO</span>
+            <h2 id="product-modal-title">Novo produto</h2>
+            <p>Preencha os dados que serão exibidos na vitrine.</p>
+          </div>
+          <button class="modal__close" type="button" data-close-modal="product-modal" aria-label="Fechar">×</button>
+        </header>
+
+        <div class="modal__body">
+          <input id="product-id" type="hidden" />
+
+          <section class="form-section">
+            <div class="form-section__title">
+              <span>01</span>
+              <div><strong>Informações principais</strong><small>Identificação e apresentação do produto</small></div>
+            </div>
+            <div class="form-grid form-grid--two">
+              <label class="field field--wide">
+                <span>Nome do produto <b>*</b></span>
+                <input id="product-name" type="text" maxlength="100" placeholder="Ex.: iPhone 15 Pro Max" required />
+              </label>
+              <label class="field">
+                <span>Categoria <b>*</b></span>
+                <select id="product-category" required></select>
+              </label>
+              <label class="field">
+                <span>Condição</span>
+                <input id="product-condition" type="text" maxlength="60" placeholder="Ex.: Seminovo premium" />
+              </label>
+              <label class="field field--full">
+                <span>Resumo curto</span>
+                <input
+                  id="product-short-description"
+                  type="text"
+                  maxlength="150"
+                  placeholder="Uma frase curta para o card do produto"
+                />
+                <small><span id="short-description-count">0</span>/150 caracteres</small>
+              </label>
+              <label class="field field--full">
+                <span>Descrição completa</span>
+                <textarea
+                  id="product-description"
+                  rows="5"
+                  maxlength="1800"
+                  placeholder="Descreva os principais detalhes, diferenciais e observações..."
+                ></textarea>
+                <small><span id="description-count">0</span>/1800 caracteres</small>
+              </label>
+            </div>
+          </section>
+
+          <section class="form-section">
+            <div class="form-section__title">
+              <span>02</span>
+              <div><strong>Preço e estoque</strong><small>Valores e disponibilidade na loja</small></div>
+            </div>
+            <div class="form-grid form-grid--three">
+              <label class="field">
+                <span>Preço atual <b>*</b></span>
+                <div class="input-prefix"><span>R$</span><input id="product-price" type="number" min="0" step="0.01" required /></div>
+              </label>
+              <label class="field">
+                <span>Preço anterior</span>
+                <div class="input-prefix"><span>R$</span><input id="product-compare-price" type="number" min="0" step="0.01" /></div>
+              </label>
+              <label class="field">
+                <span>Estoque</span>
+                <input id="product-stock" type="number" min="0" step="1" value="1" />
+              </label>
+            </div>
+          </section>
+
+          <section class="form-section">
+            <div class="form-section__title">
+              <span>03</span>
+              <div><strong>Imagens do produto</strong><small>Até 8 imagens, compactadas antes do envio</small></div>
+            </div>
+            <label class="upload-zone" id="upload-zone">
+              <input id="product-images" type="file" accept="image/jpeg,image/png,image/webp" multiple />
+              <span class="upload-zone__icon">↥</span>
+              <strong>Arraste imagens ou clique para selecionar</strong>
+              <small>JPG, PNG ou WebP • até 8 imagens</small>
+            </label>
+            <div class="upload-progress" id="upload-progress" hidden>
+              <span></span>
+              <p>Otimizando e enviando imagens...</p>
+            </div>
+            <div class="image-list" id="image-list"></div>
+            <div class="url-image-row">
+              <label class="field">
+                <span>Ou adicione uma imagem por URL</span>
+                <div class="url-add-field">
+                  <input id="image-url" type="url" placeholder="https://..." />
+                  <button id="add-image-url" type="button">Adicionar</button>
+                </div>
+              </label>
+            </div>
+          </section>
+
+          <section class="form-section">
+            <div class="form-section__title">
+              <span>04</span>
+              <div><strong>Organização e publicação</strong><small>Tags e visibilidade na vitrine</small></div>
+            </div>
+            <div class="form-grid form-grid--two">
+              <label class="field field--full">
+                <span>Tags</span>
+                <input id="product-tags" type="text" maxlength="300" placeholder="Apple, 5G, Seminovo" />
+                <small>Separe as tags por vírgula.</small>
+              </label>
+              <label class="switch-card">
+                <span><strong>Produto ativo</strong><small>Mostra o produto na vitrine</small></span>
+                <input id="product-active" type="checkbox" checked />
+                <i aria-hidden="true"></i>
+              </label>
+              <label class="switch-card">
+                <span><strong>Produto em destaque</strong><small>Prioriza o item no catálogo</small></span>
+                <input id="product-featured" type="checkbox" />
+                <i aria-hidden="true"></i>
+              </label>
+            </div>
+          </section>
+        </div>
+
+        <footer class="modal__footer">
+          <button class="button button--ghost" type="button" data-close-modal="product-modal">Cancelar</button>
+          <button class="button button--primary" id="save-product" type="submit">
+            <span class="button__idle">Salvar produto</span>
+            <span class="button__loading">Salvando...</span>
+          </button>
+        </footer>
+      </form>
+    </dialog>
+
+    <dialog class="modal modal--small" id="category-modal">
+      <form id="category-form">
+        <header class="modal__header">
+          <div>
+            <span class="modal__kicker">CATÁLOGO</span>
+            <h2 id="category-modal-title">Nova categoria</h2>
+            <p>Crie uma forma simples de organizar os produtos.</p>
+          </div>
+          <button class="modal__close" type="button" data-close-modal="category-modal" aria-label="Fechar">×</button>
+        </header>
+        <div class="modal__body">
+          <input id="category-id" type="hidden" />
+          <div class="form-grid">
+            <label class="field">
+              <span>Nome da categoria <b>*</b></span>
+              <input id="category-name" type="text" maxlength="60" placeholder="Ex.: iPhones" required />
+            </label>
+            <label class="field">
+              <span>Ordem</span>
+              <input id="category-order" type="number" min="0" step="1" value="1" />
+            </label>
+            <label class="switch-card">
+              <span><strong>Categoria ativa</strong><small>Disponível nos filtros da vitrine</small></span>
+              <input id="category-active" type="checkbox" checked />
+              <i aria-hidden="true"></i>
+            </label>
+          </div>
+        </div>
+        <footer class="modal__footer">
+          <button class="button button--ghost" type="button" data-close-modal="category-modal">Cancelar</button>
+          <button class="button button--primary" id="save-category" type="submit">
+            <span class="button__idle">Salvar categoria</span>
+            <span class="button__loading">Salvando...</span>
+          </button>
+        </footer>
+      </form>
+    </dialog>
+
+    <dialog class="confirm-dialog" id="confirm-dialog">
+      <div class="confirm-dialog__icon">!</div>
+      <h2 id="confirm-title">Excluir item?</h2>
+      <p id="confirm-message">Esta ação não pode ser desfeita.</p>
+      <div>
+        <button class="button button--ghost" id="confirm-cancel" type="button">Cancelar</button>
+        <button class="button button--danger" id="confirm-action" type="button">Excluir</button>
+      </div>
+    </dialog>
+
+    <div class="toast" id="admin-toast" role="status" aria-live="polite"></div>
+    <div class="page-loading" id="page-loading">
+      <span></span>
+      <p>Carregando catálogo...</p>
+    </div>
+  </body>
+</html>

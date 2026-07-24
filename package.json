@@ -1,0 +1,8 @@
+{
+  "name": "tecnoshop-html-cloudflare",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "npx wrangler pages dev public --kv=CATALOG_KV"
+  }
+}

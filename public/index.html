@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="TecnoShop: celulares, notebooks, acessórios e mobilidade com atendimento direto pelo WhatsApp."
+    />
+    <meta name="theme-color" content="#090909" />
+    <title>TecnoShop | Tecnologia que combina com você</title>
+    <link rel="icon" href="/assets/tecnoshop-logo.png" />
+    <link rel="stylesheet" href="/styles.css" />
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#catalogo">Ir para o catálogo</a>
+
+    <div class="announcement">
+      <div class="container announcement__inner">
+        <span>Entrega rápida para Cerquilho e região</span>
+        <span class="announcement__dot" aria-hidden="true"></span>
+        <span>Atendimento humano pelo WhatsApp</span>
+      </div>
+    </div>
+
+    <header class="site-header" id="inicio">
+      <div class="container site-header__inner">
+        <a class="brand" href="#inicio" aria-label="TecnoShop, página inicial">
+          <span class="brand__mark">T</span>
+          <span class="brand__text">TECNO<span>SHOP</span></span>
+        </a>
+
+        <nav class="desktop-nav" aria-label="Navegação principal">
+          <a href="#catalogo">Produtos</a>
+          <a href="#vantagens">Por que escolher</a>
+          <a href="#troca">Troca inteligente</a>
+          <a href="#contato">Contato</a>
+        </nav>
+
+        <div class="header-actions">
+          <button class="icon-button" id="theme-toggle" type="button" aria-label="Alternar tema">
+            <span aria-hidden="true">◐</span>
+          </button>
+          <a class="button button--compact button--primary js-whatsapp" href="#" target="_blank" rel="noopener">
+            Falar agora
+          </a>
+          <button class="menu-button" id="menu-button" type="button" aria-expanded="false" aria-controls="mobile-nav">
+            <span></span><span></span><span></span>
+            <span class="sr-only">Abrir menu</span>
+          </button>
+        </div>
+      </div>
+
+      <nav class="mobile-nav" id="mobile-nav" aria-label="Navegação móvel">
+        <a href="#catalogo">Produtos</a>
+        <a href="#vantagens">Por que escolher</a>
+        <a href="#troca">Troca inteligente</a>
+        <a href="#contato">Contato</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero__glow hero__glow--one"></div>
+        <div class="hero__glow hero__glow--two"></div>
+        <div class="container hero__grid">
+          <div class="hero__content">
+            <div class="eyebrow">
+              <span class="eyebrow__spark" aria-hidden="true">✦</span>
+              Tecnologia escolhida com cuidado
+            </div>
+            <h1>Seu próximo upgrade começa <em>aqui.</em></h1>
+            <p>
+              Produtos novos e seminovos selecionados, atendimento próximo e uma compra sem complicação.
+            </p>
+            <div class="hero__actions">
+              <a class="button button--primary" href="#catalogo">Ver produtos <span aria-hidden="true">→</span></a>
+              <a class="button button--ghost js-whatsapp" href="#" target="_blank" rel="noopener">
+                Chamar no WhatsApp
+              </a>
+            </div>
+            <div class="hero__proof">
+              <div class="avatar-stack" aria-hidden="true">
+                <span>JS</span><span>AM</span><span>RL</span>
+              </div>
+              <div>
+                <div class="stars" aria-label="5 de 5 estrelas">★★★★★</div>
+                <small>Atendimento recomendado por nossos clientes</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero__visual" aria-label="Produtos de tecnologia em destaque">
+            <div class="hero__halo"></div>
+            <img
+              class="hero__image hero__image--dark"
+              src="/assets/hero-products-dark.webp"
+              alt="Smartphone, notebook, fones e outros produtos de tecnologia"
+            />
+            <img
+              class="hero__image hero__image--light"
+              src="/assets/hero-products-light.webp"
+              alt=""
+              aria-hidden="true"
+            />
+            <div class="floating-card floating-card--top">
+              <span class="floating-card__icon">✓</span>
+              <span><strong>Selecionados</strong><small>Qualidade verificada</small></span>
+            </div>
+            <div class="floating-card floating-card--bottom">
+              <span class="floating-card__icon">↗</span>
+              <span><strong>Compra fácil</strong><small>Converse e tire dúvidas</small></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="container trust-bar" id="vantagens">
+          <article>
+            <span class="trust-bar__icon">◇</span>
+            <div><strong>Produtos selecionados</strong><small>Novos e seminovos de procedência</small></div>
+          </article>
+          <article>
+            <span class="trust-bar__icon">↯</span>
+            <div><strong>Resposta rápida</strong><small>Atendimento direto e sem robôs</small></div>
+          </article>
+          <article>
+            <span class="trust-bar__icon">⌖</span>
+            <div><strong>Loja local</strong><small id="store-location">Cerquilho — SP</small></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="catalog-section" id="catalogo">
+        <div class="container">
+          <div class="section-heading">
+            <div>
+              <span class="section-kicker">CATÁLOGO</span>
+              <h2>Encontre o produto ideal</h2>
+              <p>Explore as opções disponíveis e peça todos os detalhes pelo WhatsApp.</p>
+            </div>
+            <label class="search-box">
+              <span aria-hidden="true">⌕</span>
+              <span class="sr-only">Buscar produto</span>
+              <input id="product-search" type="search" placeholder="Buscar produto..." autocomplete="off" />
+            </label>
+          </div>
+
+          <div class="category-chips" id="category-chips" aria-label="Filtrar por categoria"></div>
+
+          <div class="catalog-status">
+            <p id="result-count">Carregando produtos...</p>
+            <label class="sort-control">
+              <span>Ordenar:</span>
+              <select id="sort-products">
+                <option value="featured">Destaques</option>
+                <option value="price-asc">Menor preço</option>
+                <option value="price-desc">Maior preço</option>
+                <option value="name">Nome</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="product-grid" id="product-grid" aria-live="polite">
+            <div class="loading-card"></div>
+            <div class="loading-card"></div>
+            <div class="loading-card"></div>
+          </div>
+
+          <div class="empty-state" id="empty-state" hidden>
+            <span>⌕</span>
+            <h3>Nenhum produto encontrado</h3>
+            <p>Tente outro termo ou escolha uma categoria diferente.</p>
+            <button class="button button--ghost" id="clear-filters" type="button">Limpar filtros</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="trade-section" id="troca">
+        <div class="container trade-card">
+          <div class="trade-card__media">
+            <img src="/assets/trade-upgrade-premium.webp" alt="Smartphones premium para troca e upgrade" />
+            <div class="trade-card__badge"><strong>Upgrade</strong><span>mais inteligente</span></div>
+          </div>
+          <div class="trade-card__content">
+            <span class="section-kicker">TROCA INTELIGENTE</span>
+            <h2>Seu aparelho atual pode valer parte do próximo.</h2>
+            <p>
+              Envie o modelo, a capacidade e o estado do seu aparelho. Nossa equipe avalia e apresenta as
+              melhores opções para o seu upgrade.
+            </p>
+            <ul>
+              <li><span>✓</span> Avaliação rápida e transparente</li>
+              <li><span>✓</span> Opções adequadas ao seu orçamento</li>
+              <li><span>✓</span> Atendimento do início ao fim</li>
+            </ul>
+            <a class="button button--primary js-trade-whatsapp" href="#" target="_blank" rel="noopener">
+              Avaliar meu aparelho <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="contact-section" id="contato">
+        <div class="container contact-card">
+          <div>
+            <span class="section-kicker">ATENDIMENTO TECNOSHOP</span>
+            <h2>Viu algo que gostou?</h2>
+            <p>Chame a gente para confirmar disponibilidade, condição, cor e forma de pagamento.</p>
+          </div>
+          <a class="button button--light js-whatsapp" href="#" target="_blank" rel="noopener">
+            Conversar no WhatsApp <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container site-footer__grid">
+        <div>
+          <a class="brand brand--footer" href="#inicio">
+            <span class="brand__mark">T</span>
+            <span class="brand__text">TECNO<span>SHOP</span></span>
+          </a>
+          <p>Tecnologia, atendimento próximo e escolhas que fazem sentido.</p>
+        </div>
+        <div>
+          <strong>Catálogo</strong>
+          <nav id="footer-categories" aria-label="Categorias no rodapé"></nav>
+        </div>
+        <div>
+          <strong>Atendimento</strong>
+          <p id="footer-address">Cerquilho — SP</p>
+          <a class="js-whatsapp" href="#" target="_blank" rel="noopener">WhatsApp</a>
+        </div>
+      </div>
+      <div class="container site-footer__bottom">
+        <span>© <span id="current-year"></span> TecnoShop. Todos os direitos reservados.</span>
+        <span>Mostruário online • Consulte disponibilidade</span>
+      </div>
+    </footer>
+
+    <a class="whatsapp-float js-whatsapp" href="#" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+      <span aria-hidden="true">✆</span>
+    </a>
+
+    <dialog class="product-dialog" id="product-dialog">
+      <button class="dialog-close" id="dialog-close" type="button" aria-label="Fechar">×</button>
+      <div id="dialog-content"></div>
+    </dialog>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>
