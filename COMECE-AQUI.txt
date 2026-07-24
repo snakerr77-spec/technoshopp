@@ -1,0 +1,34 @@
+TECNOSHOP — COMO ABRIR E PUBLICAR
+
+TESTAR NO COMPUTADOR
+
+1. Extraia o ZIP.
+2. Abra a pasta tecnoshop-vendas-react no VS Code.
+3. Abra o terminal do VS Code.
+4. Execute: npm install
+5. Execute: npm run dev
+6. Abra o endereço exibido no terminal.
+
+PUBLICAR NO CLOUDFLARE PAGES
+
+Framework preset: React (Vite)
+Build command: npm run build
+Build output directory: dist
+Root directory: /
+
+O projeto não utiliza R2, D1, Worker ou variáveis de ambiente.
+Consulte o arquivo CLOUDFLARE-PAGES.txt para ver o passo a passo completo.
+
+ADMINISTRADOR DE TESTE
+
+E-mail: admin@tecnoshop.com
+Senha: Admin@2026
+
+COMO OS DADOS SÃO SALVOS
+
+Produtos, contas, pedidos e configurações ficam no localStorage.
+As imagens ficam no IndexedDB do navegador.
+
+Por isso, os dados criados em um navegador não aparecem automaticamente
+em outro dispositivo. Esta versão é indicada para demonstração e testes
+sem banco de dados e sem armazenamento R2.
